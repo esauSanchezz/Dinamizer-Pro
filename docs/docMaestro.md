@@ -27,7 +27,7 @@
 
 ## 1. Visión del producto
 
-**Dinamizer Pro** es una plataforma SaaS multi-tenant, modular y adaptable para pequeños negocios en Monterrey, Nuevo León — con proyección de expansión nacional.
+**Dinamizer Pro** es una plataforma SaaS(Software as service) multi-tenant(multi-inquilino), modular y adaptable para pequeños y medianos negocios en Monterrey, Nuevo León — con proyección de expansión nacional e internacional.
 
 ### Propuesta de valor
 
