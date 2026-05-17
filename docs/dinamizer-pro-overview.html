@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinamizer Pro — Visión del Producto</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --card: #16161f;
+    --border: rgba(255,255,255,0.07);
+    --accent: #7c6ef7;
+    --accent2: #4fc9a4;
+    --accent3: #f7c46e;
+    --accent4: #f76e8a;
+    --text: #e8e8f0;
+    --muted: #7a7a8c;
+    --light: #b0b0c4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; gap: 0; height: 58px;
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--text); margin-right: auto; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-links a {
+    color: var(--muted); font-size: 13px; font-weight: 400;
+    text-decoration: none; padding: 6px 12px; border-radius: 6px;
+    transition: all .2s;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--bg3); }
+  .nav-badge {
+    margin-left: 20px;
+    font-size: 11px; font-weight: 500; padding: 4px 10px;
+    border-radius: 20px; background: rgba(124,110,247,0.15);
+    color: var(--accent); border: 1px solid rgba(124,110,247,0.3);
+    white-space: nowrap;
+  }
+
+  /* SECTIONS */
+  section { padding: 90px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: 1.1; letter-spacing: -1.5px; }
+  h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(24px, 3vw, 36px); letter-spacing: -0.5px; line-height: 1.2; }
+  h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 18px; }
+  p { color: var(--light); font-size: 15px; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(124,110,247,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 70%, rgba(79,201,164,0.08) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent2); border: 1px solid rgba(79,201,164,0.3);
+    background: rgba(79,201,164,0.07); padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+  .hero-title { margin-bottom: 24px; }
+  .hero-title .line2 { color: var(--accent); }
+  .hero-sub { font-size: 17px; color: var(--light); max-width: 580px; margin-bottom: 40px; line-height: 1.7; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 50px; }
+  .pill {
+    font-size: 13px; padding: 7px 14px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--muted);
+    background: var(--card);
+  }
+  .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+  .stat { }
+  .stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 32px; color: var(--text); }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: rgba(124,110,247,0.3); transform: translateY(-2px); }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+  /* DIFFERENTIATORS */
+  .diff-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 14px;
+  }
+
+  /* PILOTOS */
+  .pilot-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; transition: border-color .2s;
+    cursor: pointer;
+  }
+  .pilot-card:hover { border-color: rgba(124,110,247,0.4); }
+  .pilot-card.active { border-color: var(--accent); }
+  .pilot-header {
+    padding: 20px 22px; display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pilot-emoji { font-size: 28px; }
+  .pilot-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 15px; }
+  .pilot-body { padding: 18px 22px; display: none; }
+  .pilot-card.active .pilot-body { display: block; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .tag {
+    font-size: 12px; padding: 4px 10px; border-radius: 20px;
+    background: rgba(124,110,247,0.1); color: var(--accent);
+    border: 1px solid rgba(124,110,247,0.2);
+  }
+  .tag.green { background: rgba(79,201,164,0.1); color: var(--accent2); border-color: rgba(79,201,164,0.2); }
+  .tag.yellow { background: rgba(247,196,110,0.1); color: var(--accent3); border-color: rgba(247,196,110,0.2); }
+
+  /* MODULE MATRIX */
+  .matrix-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .matrix-table th {
+    font-size: 11px; font-weight: 500; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .06em;
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .matrix-table td {
+    padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--light); vertical-align: middle;
+  }
+  .matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .matrix-table td:first-child { font-weight: 400; color: var(--text); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .dot.full { background: var(--accent2); box-shadow: 0 0 6px rgba(79,201,164,0.5); }
+  .dot.partial { background: var(--accent3); box-shadow: 0 0 6px rgba(247,196,110,0.4); }
+  .dot.none { background: rgba(255,255,255,0.1); }
+  .dot-label { font-size: 11px; margin-left: 4px; color: var(--muted); }
+
+  /* MVP ROADMAP */
+  .mvp-timeline { position: relative; padding-left: 30px; }
+  .mvp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 16px; bottom: 16px;
+    width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3), var(--border));
+    border-radius: 2px;
+  }
+  .mvp-item { position: relative; margin-bottom: 36px; }
+  .mvp-item::before {
+    content: ''; position: absolute; left: -34px; top: 14px;
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid var(--accent); background: var(--bg);
+  }
+  .mvp-item:nth-child(2)::before { border-color: var(--accent2); }
+  .mvp-item:nth-child(3)::before { border-color: var(--accent3); }
+  .mvp-item:nth-child(4)::before { border-color: var(--accent4); }
+  .mvp-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .mvp-badge {
+    font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px;
+  }
+  .b1 { background: rgba(124,110,247,0.15); color: var(--accent); border: 1px solid rgba(124,110,247,0.3); }
+  .b2 { background: rgba(79,201,164,0.15); color: var(--accent2); border: 1px solid rgba(79,201,164,0.3); }
+  .b3 { background: rgba(247,196,110,0.15); color: var(--accent3); border: 1px solid rgba(247,196,110,0.3); }
+  .b4 { background: rgba(247,110,138,0.15); color: var(--accent4); border: 1px solid rgba(247,110,138,0.3); }
+  .mvp-title { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 17px; }
+  .mvp-period { font-size: 12px; color: var(--muted); margin-left: auto; }
+  .mvp-goal {
+    font-size: 13px; color: var(--accent2); margin-bottom: 12px;
+    padding: 8px 14px; background: rgba(79,201,164,0.06);
+    border-left: 3px solid var(--accent2); border-radius: 0 6px 6px 0;
+  }
+  .feature-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .feature-chip {
+    font-size: 12px; padding: 5px 12px; border-radius: 20px;
+    background: var(--bg3); border: 1px solid var(--border); color: var(--light);
+  }
+
+  /* TECH STACK */
+  .stack-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px; border-bottom: 1px solid var(--border);
+  }
+  .stack-row:last-child { border-bottom: none; }
+  .stack-layer {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--muted); width: 100px; flex-shrink: 0;
+  }
+  .stack-tech { font-weight: 500; color: var(--text); font-size: 14px; flex: 1; }
+  .stack-why { font-size: 12px; color: var(--muted); }
+
+  /* COSTS */
+  .cost-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .cost-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px;
+    text-align: center;
+  }
+  .cost-phase { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+  .cost-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px; margin-bottom: 6px; }
+  .cost-desc { font-size: 12px; color: var(--muted); }
+
+  /* PRICING */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .price-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 26px 22px;
+    transition: border-color .2s;
+  }
+  .price-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(124,110,247,0.08), var(--card));
+  }
+  .price-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .price-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 30px; color: var(--accent); }
+  .price-amount span { font-size: 14px; color: var(--muted); font-weight: 400; font-family: 'DM Sans', sans-serif; }
+  .price-features { margin-top: 16px; }
+  .price-feature { font-size: 13px; color: var(--light); padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 8px; align-items: flex-start; }
+  .price-feature::before { content: '✓'; color: var(--accent2); flex-shrink: 0; font-weight: 500; }
+
+  /* PENDING */
+  .pending-item {
+    display: flex; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid var(--border); font-size: 14px; color: var(--light);
+    align-items: flex-start;
+  }
+  .pending-item:last-child { border-bottom: none; }
+  .pending-box {
+    width: 16px; height: 16px; border: 1.5px solid var(--muted);
+    border-radius: 3px; flex-shrink: 0; margin-top: 3px;
+  }
+  .pending-cat { font-size: 11px; color: var(--accent3); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; margin-left: auto; flex-shrink: 0; }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 40px; color: var(--muted); font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 70px 20px; }
+    .hero-content { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Dinamizer<span>Pro</span></div>
+  <div class="nav-links">
+    <a href="#vision">Visión</a>
+    <a href="#pilotos">Pilotos</a>
+    <a href="#modulos">Módulos</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#tech">Tecnología</a>
+    <a href="#precios">Precios</a>
+    <a href="#pendientes">Pendientes</a>
+  </div>
+  <div class="nav-badge">🚧 Discovery — Mayo 2026</div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Documento de producto — versión 0.1</div>
+    <h1 class="hero-title">
+      La herramienta que<br>
+      <span class="line2">todo negocio regio</span><br>
+      necesitaba.
+    </h1>
+    <p class="hero-sub">
+      Una plataforma todo-en-uno para que los emprendedores de Monterrey dejen de operar con libretas y WhatsApp — y empiecen a crecer con datos reales e inteligencia artificial.
+    </p>
+    <div class="hero-pills">
+      <div class="pill">💅 Salones de uñas</div>
+      <div class="pill">✂️ Barberías</div>
+      <div class="pill">🍽️ Restaurantes</div>
+      <div class="pill">🫙 Distribuidores</div>
+      <div class="pill">🎉 Salones de fiestas</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">tipos de negocio piloto</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">fases de desarrollo</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">costo para arrancar</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12<span>m</span></div>
+        <div class="stat-label">al producto completo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- VISIÓN -->
+<section id="vision">
+  <div class="reveal">
+    <div class="section-label">01 — Visión del producto</div>
+    <h2 style="margin-bottom:16px">¿Qué es Dinamizer Pro?</h2>
+    <p style="max-width:680px;margin-bottom:48px;font-size:16px">
+      Una plataforma de software por suscripción mensual (SaaS) que cada negocio usa desde su celular o computadora para organizar citas, empleados, inventario, ventas y clientes — todo en un solo lugar, con inteligencia artificial integrada.
+    </p>
+
+    <div class="section-label" style="margin-bottom:20px">Lo que nos hace diferentes</div>
+    <div class="grid-2">
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(124,110,247,0.15)">🤖</div>
+        <h3 style="margin-bottom:8px">Configuración sin esfuerzo</h3>
+        <p>El dueño describe su negocio en un chat: "Tengo una barbería, somos 3 barberos, cobramos $150 el corte". La IA configura todo automáticamente.</p>
+      </div>
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(79,201,164,0.15)">🎙️</div>
+        <h3 style="margin-bottom:8px">Registro por voz</h3>
+        <p>El mecánico con las manos ocupadas dice "cambio de aceite a un Sentra, $1,200 en efectivo" y el sistema lo registra solo. Sin tocar teclado.</p>
+      </div>
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(247,196,110,0.15)">📊</div>
+        <h3 style="margin-bottom:8px">Planificador inteligente</h3>
+        <p>Detecta los martes a las 10am que siempre están vacíos y sugiere: "Asigna a Sofía la limpieza del inventario hoy" o "manda descuento a clientes que no han venido en un mes".</p>
+      </div>
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(247,110,138,0.15)">🔮</div>
+        <h3 style="margin-bottom:8px">Inventario predictivo</h3>
+        <p>El restaurante siempre pide aceite cada 15 días. Al día 13, el sistema avisa: "Es momento de llamarle al Restaurante X, se están quedando sin aceite".</p>
+      </div>
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(79,201,164,0.15)">💬</div>
+        <h3 style="margin-bottom:8px">Nativo para México</h3>
+        <p>WhatsApp, transferencias SPEI, efectivo, fichas de depósito. El sistema habla el idioma de los negocios regios.</p>
+      </div>
+      <div class="card reveal">
+        <div class="diff-icon" style="background:rgba(124,110,247,0.15)">🔧</div>
+        <h3 style="margin-bottom:8px">Adaptable a cualquier giro</h3>
+        <p>No es un sistema rígido para un solo tipo de negocio. Los módulos se activan según lo que necesite cada quien.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px">
+      <div class="section-label" style="margin-bottom:16px">Lo que el sistema NO hace (por ahora)</div>
+      <div class="grid-2">
+        <div style="background:var(--bg3);border-radius:12px;padding:20px 22px;border:1px solid var(--border)">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No emite facturas fiscales (CFDI) — se agrega después</div>
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No maneja nómina ni cálculo de IMSS</div>
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No es tienda en línea ni e-commerce</div>
+          </div>
+        </div>
+        <div style="background:var(--bg3);border-radius:12px;padding:20px 22px;border:1px solid var(--border)">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No es un POS con hardware físico (impresora, cajón)</div>
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No se integra directamente con bancos</div>
+            <div style="font-size:14px;color:var(--light);display:flex;gap:10px;align-items:flex-start"><span style="color:var(--accent4);flex-shrink:0">✕</span> No tiene app móvil en la primera versión (viene después)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PILOTOS -->
+<section id="pilotos">
+  <div class="reveal">
+    <div class="section-label">02 — Negocios piloto</div>
+    <h2 style="margin-bottom:12px">5 negocios en Monterrey probando el sistema</h2>
+    <p style="margin-bottom:36px">Beta cerrada con negocios reales para validar que el sistema funciona antes de abrirlo al público.</p>
+
+    <div class="grid-2" id="pilots-grid">
+
+      <div class="pilot-card active" onclick="togglePilot(this)">
+        <div class="pilot-header">
+          <span class="pilot-emoji">💅</span>
+          <div>
+            <div class="pilot-name">Salón de uñas / belleza</div>
+            <div style="font-size:12px;color:var(--muted)">Citas, comisiones, inventario de productos</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px;color:var(--muted)">↓</div>
+        </div>
+        <div class="pilot-body">
+          <p style="font-size:14px;margin-bottom:12px">Las empleadas atienden clientes por turno, cobran comisión por servicio, y manejan productos como geles, tintes y acrílicos. El dueño necesita ver cuánto produjo cada quien.</p>
+          <div class="tag-list">
+            <span class="tag">Agenda por empleada</span>
+            <span class="tag">Comisiones</span>
+            <span class="tag">Inventario de productos</span>
+            <span class="tag green">Piloto completo en MVP 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilot-card" onclick="togglePilot(this)">
+        <div class="pilot-header">
+          <span class="pilot-emoji">✂️</span>
+          <div>
+            <div class="pilot-name">Barbería</div>
+            <div style="font-size:12px;color:var(--muted)">Agenda, servicios, fidelización de clientes</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px;color:var(--muted)">↓</div>
+        </div>
+        <div class="pilot-body">
+          <p style="font-size:14px;margin-bottom:12px">Similar al salón de uñas: barberos con agenda propia, cobro por servicio con o sin cita previa, venta de productos para el cabello. La fidelización es clave — los clientes regresan cada 2-3 semanas.</p>
+          <div class="tag-list">
+            <span class="tag">Agenda por barbero</span>
+            <span class="tag">Comisiones por corte</span>
+            <span class="tag">Historial de clientes</span>
+            <span class="tag green">Piloto completo en MVP 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilot-card" onclick="togglePilot(this)">
+        <div class="pilot-header">
+          <span class="pilot-emoji">🍽️</span>
+          <div>
+            <div class="pilot-name">Restaurante</div>
+            <div style="font-size:12px;color:var(--muted)">Ventas por turno, inventario de insumos</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px;color:var(--muted)">↓</div>
+        </div>
+        <div class="pilot-body">
+          <p style="font-size:14px;margin-bottom:12px">No maneja citas, pero sí registro de ventas por turno, control de ingredientes en inventario y manejo de meseros. En MVP 1 entra parcialmente — el control de mesas se define en Fase 2.</p>
+          <div class="tag-list">
+            <span class="tag">Corte de caja por turno</span>
+            <span class="tag">Inventario de insumos</span>
+            <span class="tag">Empleados por turno</span>
+            <span class="tag yellow">Piloto parcial en MVP 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilot-card" onclick="togglePilot(this)">
+        <div class="pilot-header">
+          <span class="pilot-emoji">🫙</span>
+          <div>
+            <div class="pilot-name">Vendedor de aceite comestible</div>
+            <div style="font-size:12px;color:var(--muted)">Clientes mayoristas, pedidos recurrentes</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px;color:var(--muted)">↓</div>
+        </div>
+        <div class="pilot-body">
+          <p style="font-size:14px;margin-bottom:12px">Distribuye galones de aceite a restaurantes. Sus clientes piden en ciclos regulares. El sistema necesita avisarle cuándo llamar a cada cliente antes de que se queden sin producto — esa es la IA predictiva.</p>
+          <div class="tag-list">
+            <span class="tag">Clientes mayoristas</span>
+            <span class="tag">Inventario de galones</span>
+            <span class="tag">Alertas predictivas</span>
+            <span class="tag yellow">Piloto parcial en MVP 1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pilot-card" onclick="togglePilot(this)">
+        <div class="pilot-header">
+          <span class="pilot-emoji">🎉</span>
+          <div>
+            <div class="pilot-name">Salón de fiestas infantiles</div>
+            <div style="font-size:12px;color:var(--muted)">Reservas de fecha, paquetes, anticipos</div>
+          </div>
+          <div style="margin-left:auto;font-size:18px;color:var(--muted)">↓</div>
+        </div>
+        <div class="pilot-body">
+          <p style="font-size:14px;margin-bottom:12px">Reservan fechas completas con meses de anticipación, cobran anticipo al momento de reservar y el resto el día del evento. Manejan paquetes (básico, premium, etc.) y necesitan checklist de preparación por evento.</p>
+          <div class="tag-list">
+            <span class="tag">Reservas de fecha completa</span>
+            <span class="tag">Paquetes con anticipo</span>
+            <span class="tag">Checklist de evento</span>
+            <span class="tag yellow">Piloto parcial en MVP 1</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- MÓDULOS -->
+<section id="modulos">
+  <div class="reveal">
+    <div class="section-label">03 — Módulos del sistema</div>
+    <h2 style="margin-bottom:12px">¿Qué puede hacer el sistema?</h2>
+    <p style="margin-bottom:36px">Cada negocio activa solo los módulos que necesita. No pagan por lo que no usan.</p>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:32px">
+      <div style="padding:16px 18px;border-bottom:1px solid var(--border);display:flex;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light)"><span class="dot full"></span> Crítico para este negocio</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light)"><span class="dot partial"></span> Opcional / parcial</div>
+        <div style="display:flex;align-items:center;gap=6px;font-size:12px;color:var(--light)"><span class="dot none" style="margin-left:10px"></span> No aplica</div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Módulo</th>
+              <th>💅 Uñas</th>
+              <th>🍽️ Rest.</th>
+              <th>🫙 Aceite</th>
+              <th>✂️ Barb.</th>
+              <th>🎉 Fiestas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>🔐 Login y acceso seguro</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>📅 Agenda y citas</td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td><td><span class="dot none"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>✅ Tareas para empleados</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>💵 Caja y registro de ventas</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>📦 Inventario</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td></tr>
+            <tr><td>👥 Clientes (historial)</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>👩‍💼 Empleados y permisos</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td></tr>
+            <tr><td>💰 Comisiones</td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td><td><span class="dot none"></span></td><td><span class="dot full"></span></td><td><span class="dot none"></span></td></tr>
+            <tr><td>🤖 Configuración por IA</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>🎙️ Registro por voz</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot partial"></span></td></tr>
+            <tr><td>💬 WhatsApp</td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td><td><span class="dot full"></span></td></tr>
+            <tr><td>🔄 Pedidos recurrentes</td><td><span class="dot none"></span></td><td><span class="dot none"></span></td><td><span class="dot full"></span></td><td><span class="dot none"></span></td><td><span class="dot none"></span></td></tr>
+            <tr><td>🎁 Paquetes con anticipo</td><td><span class="dot none"></span></td><td><span class="dot none"></span></td><td><span class="dot none"></span></td><td><span class="dot none"></span></td><td><span class="dot full"></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="reveal">
+    <div class="section-label">04 — Roadmap</div>
+    <h2 style="margin-bottom:12px">El plan: 4 fases en 12+ meses</h2>
+    <p style="margin-bottom:40px">Arrancamos con lo esencial y vamos agregando funciones conforme los pilotos validan que funcionan.</p>
+
+    <div class="mvp-timeline">
+
+      <div class="mvp-item reveal">
+        <div class="mvp-header">
+          <span class="mvp-badge b1">MVP 1</span>
+          <span class="mvp-title">Core operativo</span>
+          <span class="mvp-period">Meses 1 – 4</span>
+        </div>
+        <div class="mvp-goal">🎯 Objetivo: Que el dueño deje de usar su libreta o WhatsApp para operar el negocio.</div>
+        <div class="feature-list">
+          <span class="feature-chip">🔐 Login y roles</span>
+          <span class="feature-chip">📅 Agenda y citas</span>
+          <span class="feature-chip">👩‍💼 Gestión de empleados</span>
+          <span class="feature-chip">👥 Clientes con historial</span>
+          <span class="feature-chip">💵 Registro de ventas</span>
+          <span class="feature-chip">🧮 Corte de caja diario</span>
+          <span class="feature-chip">📦 Inventario básico</span>
+          <span class="feature-chip">✅ Tareas asignables</span>
+        </div>
+      </div>
+
+      <div class="mvp-item reveal">
+        <div class="mvp-header">
+          <span class="mvp-badge b2">MVP 2</span>
+          <span class="mvp-title">Inteligencia y visibilidad</span>
+          <span class="mvp-period">Meses 5 – 8</span>
+        </div>
+        <div class="mvp-goal">🎯 Objetivo: Que el sistema piense por el dueño y le dé información clara de su negocio.</div>
+        <div class="feature-list">
+          <span class="feature-chip">🤖 Configuración por IA (chat)</span>
+          <span class="feature-chip">🎙️ Registro de ventas por voz</span>
+          <span class="feature-chip">💡 Sugerencias inteligentes</span>
+          <span class="feature-chip">📊 Dashboard con métricas</span>
+          <span class="feature-chip">📄 Reportes exportables PDF/Excel</span>
+        </div>
+      </div>
+
+      <div class="mvp-item reveal">
+        <div class="mvp-header">
+          <span class="mvp-badge b3">MVP 3</span>
+          <span class="mvp-title">Automatización y canales</span>
+          <span class="mvp-period">Meses 9 – 12</span>
+        </div>
+        <div class="mvp-goal">🎯 Objetivo: Que el sistema trabaje solo en tareas repetitivas y llegue a los clientes.</div>
+        <div class="feature-list">
+          <span class="feature-chip">💬 WhatsApp Business</span>
+          <span class="feature-chip">🔔 Recordatorios automáticos</span>
+          <span class="feature-chip">🔮 Inventario predictivo</span>
+          <span class="feature-chip">🔄 Pedidos recurrentes</span>
+          <span class="feature-chip">🎁 Paquetes con anticipos</span>
+        </div>
+      </div>
+
+      <div class="mvp-item reveal">
+        <div class="mvp-header">
+          <span class="mvp-badge b4">Fase 4</span>
+          <span class="mvp-title">App móvil nativa</span>
+          <span class="mvp-period">Mes 13+</span>
+        </div>
+        <div class="mvp-goal">🎯 Objetivo: Acceso nativo desde Android e iOS para dueños y empleados en campo.</div>
+        <div class="feature-list">
+          <span class="feature-chip">📱 App Android e iOS</span>
+          <span class="feature-chip">🔔 Notificaciones push</span>
+          <span class="feature-chip">📵 Modo sin internet</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ROLES -->
+<section id="roles">
+  <div class="reveal">
+    <div class="section-label">05 — Roles y permisos</div>
+    <h2 style="margin-bottom:12px">¿Quién ve qué?</h2>
+    <p style="margin-bottom:36px">El sistema tiene dos vistas principales: la del dueño y la del empleado. Cada quien ve solo lo que necesita.</p>
+
+    <div class="grid-2">
+      <div class="card" style="border-color:rgba(124,110,247,0.3)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(124,110,247,0.15);display:flex;align-items:center;justify-content:center;font-size:20px">👑</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:16px">Dueño / Dueña</div>
+            <div style="font-size:12px;color:var(--muted)">Acceso completo al negocio</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Ve métricas, ganancias y reportes completos</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Gestiona todos los empleados y sus permisos</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Ve y edita la agenda completa del negocio</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Hace el corte de caja y ve el historial</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Administra el inventario completo</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Asigna tareas a cualquier empleado</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Configura el negocio (precios, servicios, etc.)</div>
+        </div>
+      </div>
+
+      <div class="card" style="border-color:rgba(79,201,164,0.3)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(79,201,164,0.15);display:flex;align-items:center;justify-content:center;font-size:20px">👩‍💼</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:16px">Empleado / Empleada</div>
+            <div style="font-size:12px;color:var(--muted)">Vista enfocada en su trabajo del día</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Ve su propia agenda del día</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Ve sus tareas asignadas y las marca completadas</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Registra ventas y pagos de sus clientes</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--accent2)">✓</span> Consulta fichas de clientes y agrega notas</div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--muted)">—</span> <span style="color:var(--muted)">No ve métricas ni reportes del negocio</span></div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--muted)">—</span> <span style="color:var(--muted)">No puede gestionar otros empleados</span></div>
+          <div style="font-size:13px;color:var(--light);display:flex;gap:8px"><span style="color:var(--muted)">—</span> <span style="color:var(--muted)">No tiene acceso a la configuración del negocio</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TECH -->
+<section id="tech">
+  <div class="reveal">
+    <div class="section-label">06 — Plan técnico</div>
+    <h2 style="margin-bottom:12px">Cómo se construye</h2>
+    <p style="margin-bottom:12px">Para tu referencia — esta sección es más técnica, pensada para el desarrollador.</p>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:32px">
+      <div class="stack-row">
+        <div class="stack-layer">Pantallas</div>
+        <div class="stack-tech">Blazor Server (C#)</div>
+        <div class="stack-why">Un solo lenguaje para todo el sistema — sin JavaScript extra</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-layer">Backend</div>
+        <div class="stack-tech">ASP.NET Core 9 Web API</div>
+        <div class="stack-why">La lógica del negocio vive aquí — seguro, rápido, escalable</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-layer">Base de datos</div>
+        <div class="stack-tech">PostgreSQL 16</div>
+        <div class="stack-why">Open source y gratuito — nunca hay que pagar licencia</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-layer">Componentes</div>
+        <div class="stack-tech">MudBlazor</div>
+        <div class="stack-why">Calendario, tablas y formularios listos — gratis y open source</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-layer">Inteligencia IA</div>
+        <div class="stack-tech">Semantic Kernel + OpenAI</div>
+        <div class="stack-why">Librería oficial de Microsoft para integrar IA en .NET</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-layer">Voz</div>
+        <div class="stack-tech">Whisper API</div>
+        <div class="stack-why">El mejor reconocimiento de voz en español del mercado</div>
+      </div>
+      <div class="stack-row" style="border-bottom:none">
+        <div class="stack-layer">IDE / Herramienta</div>
+        <div class="stack-tech">JetBrains Rider + GitHub</div>
+        <div class="stack-why">Desarrollo y versiones del código en un solo lugar</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-bottom:16px">Infraestructura — del desarrollo a la nube</div>
+    <div class="cost-phases">
+      <div class="cost-card">
+        <div class="cost-phase">Fase 1 — Hoy</div>
+        <div class="cost-amount" style="color:var(--accent2)">$0<span style="font-size:16px;font-weight:400;font-family:'DM Sans';color:var(--muted)">/mes</span></div>
+        <div style="font-size:13px;color:var(--light);margin-top:8px">Todo corre en la laptop del desarrollador. Sin servidores ni costos.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-phase">Fase 2 — Beta pilotos</div>
+        <div class="cost-amount" style="color:var(--accent3)">~$10<span style="font-size:14px;font-weight:400;font-family:'DM Sans';color:var(--muted)"> USD/mes</span></div>
+        <div style="font-size:13px;color:var(--light);margin-top:8px">Servidor en Railway + dominio .mx + correos automáticos.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-phase">Fase 3 — Producción</div>
+        <div class="cost-amount" style="color:var(--accent4)">~$80<span style="font-size:14px;font-weight:400;font-family:'DM Sans';color:var(--muted)"> USD/mes</span></div>
+        <div style="font-size:13px;color:var(--light);margin-top:8px">Servidor escalable + IA activa + WhatsApp. Para cuando hay clientes pagando.</div>
+      </div>
+      <div class="cost-card" style="border-color:rgba(79,201,164,0.3)">
+        <div class="cost-phase">Con 20 clientes a $299 MXN</div>
+        <div class="cost-amount" style="color:var(--accent2)">$5,980<span style="font-size:14px;font-weight:400;font-family:'DM Sans';color:var(--muted)"> MXN/mes</span></div>
+        <div style="font-size:13px;color:var(--light);margin-top:8px">vs ~$1,400 MXN de costos. El modelo escala a favor del negocio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="reveal">
+    <div class="section-label">07 — Modelo de negocio</div>
+    <h2 style="margin-bottom:8px">Planes de suscripción</h2>
+    <p style="margin-bottom:8px">Cobro mensual por negocio. A validar con los pilotos antes del lanzamiento público.</p>
+    <div style="display:inline-block;font-size:12px;padding:4px 12px;border-radius:20px;background:rgba(247,196,110,0.1);color:var(--accent3);border:1px solid rgba(247,196,110,0.2);margin-bottom:32px">⚠️ Precios provisionales — sujetos a cambio</div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Básico</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Para negocios pequeños que están empezando</div>
+        <div class="price-amount">$299 <span>MXN/mes</span></div>
+        <div class="price-features">
+          <div class="price-feature">1 dueño + hasta 3 empleados</div>
+          <div class="price-feature">Agenda, caja e inventario</div>
+          <div class="price-feature">Hasta 100 clientes registrados</div>
+          <div class="price-feature">Soporte por email</div>
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div style="font-size:11px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">⭐ Más popular</div>
+        <div class="price-name">Profesional</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Para negocios en crecimiento que quieren IA</div>
+        <div class="price-amount">$599 <span>MXN/mes</span></div>
+        <div class="price-features">
+          <div class="price-feature">Hasta 10 empleados</div>
+          <div class="price-feature">Todo el plan Básico</div>
+          <div class="price-feature">IA + registro por voz</div>
+          <div class="price-feature">Dashboard y reportes</div>
+          <div class="price-feature">Clientes ilimitados</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Negocio</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:14px">Para negocios establecidos con equipo grande</div>
+        <div class="price-amount">$999 <span>MXN/mes</span></div>
+        <div class="price-features">
+          <div class="price-feature">Empleados ilimitados</div>
+          <div class="price-feature">Todo el plan Profesional</div>
+          <div class="price-feature">WhatsApp Business incluido</div>
+          <div class="price-feature">Inventario predictivo con IA</div>
+          <div class="price-feature">Soporte prioritario por WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PENDIENTES -->
+<section id="pendientes">
+  <div class="reveal">
+    <div class="section-label">08 — Pendientes y preguntas abiertas</div>
+    <h2 style="margin-bottom:12px">Lo que falta por definir</h2>
+    <p style="margin-bottom:36px">Estas son las decisiones que se tomarán conforme avance el proceso de discovery con los pilotos.</p>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:6px 22px">
+
+      <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--accent3);text-transform:uppercase;letter-spacing:.08em;font-weight:500;margin-bottom:12px">Producto</div>
+        <div class="pending-item"><div class="pending-box"></div><span>¿El nombre "Dinamizer Pro" es definitivo? — <em style="color:var(--muted)">provisional, puede cambiar</em></span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>¿Cómo maneja el restaurante las mesas o comandas? ¿Entra en MVP 1 o MVP 2?</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>¿El salón de fiestas necesita un módulo de checklist de evento específico?</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>¿El vendedor de aceite necesita cuentas por cobrar / crédito a clientes?</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>¿Se necesita un rol intermedio entre Dueño y Empleado (ej. Encargado / Gerente)?</span></div>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-weight:500;margin-bottom:12px">Técnico</div>
+        <div class="pending-item"><div class="pending-box"></div><span>Definir estructura de carpetas del proyecto en Rider</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Generar flujos de usuario por módulo (Fase 2 del discovery)</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Generar wireframes de pantallas principales (Fase 3 del discovery)</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Decidir entre Resend o SendGrid para correos automáticos</span></div>
+      </div>
+
+      <div style="padding:14px 0">
+        <div style="font-size:11px;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;font-weight:500;margin-bottom:12px">Negocio</div>
+        <div class="pending-item"><div class="pending-box"></div><span>Validar precios de suscripción con los 5 pilotos</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Definir condiciones del período de prueba gratuito (¿14 días? ¿30 días?)</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Redactar aviso de privacidad — obligatorio por ley antes de recibir datos de clientes</span></div>
+        <div class="pending-item"><div class="pending-box"></div><span>Definir nombre de dominio definitivo (.mx)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px">Dinamizer<span style="color:var(--accent)">Pro</span></div>
+  <div>Documento vivo — versión 0.1 — Mayo 2026</div>
+  <div style="margin-top:4px;color:rgba(122,122,140,0.6)">El nombre "Dinamizer Pro" es provisional y puede cambiar antes del lanzamiento público.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Pilot cards toggle
+  function togglePilot(card) {
+    const wasActive = card.classList.contains('active');
+    document.querySelectorAll('.pilot-card').forEach(c => c.classList.remove('active'));
+    if (!wasActive) card.classList.add('active');
+  }
+</script>
+</body>
+</html>
